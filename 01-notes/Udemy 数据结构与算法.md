@@ -81,7 +81,7 @@ int main() {
     return 0;
 }
 /*
-C:\Users\Admin\CLionProjects\0801\cmake-build-debug\0801.exe
+C:\Users\Admin\CLionProjects\0801\cmak e-build-debug\0801.exe
 4
 32
 40
@@ -90,11 +90,41 @@ C:\Users\Admin\CLionProjects\0801\cmake-build-debug\0801.exe
 */
 ```
 
+### Pointers 
+
+defined as an **address variable** that is meant for storing address of data
+
+- access heap memory 
+
+  - c				malloc     
+
+    ```c++
+    int *p;
+    p = (int*)malloc(6*sizeof(int));
+    ```
+
+    
+
+  - c++            new
+
+    ```c++
+    int *p;
+    p = new int[5];
+    ```
+
+    
+
+- **access the resources which are  outside the program**
+
+- pass parameters
 
 
-### Pointers
 
 ### Reference
+
+ alias given to a variable
+
+### 
 
 ### Parameter Passing 参数传递
 
