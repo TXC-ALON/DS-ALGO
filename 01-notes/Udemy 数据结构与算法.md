@@ -103,8 +103,6 @@ defined as an **address variable** that is meant for storing address of data
     p = (int*)malloc(6*sizeof(int));
     ```
 
-    
-
   - c++            new
 
     ```c++
@@ -124,11 +122,107 @@ defined as an **address variable** that is meant for storing address of data
 
  alias given to a variable
 
-### 
+### Pointers upon a structure
+
+```c++
+struct Rect r = {1,4};
+struct Rect *p = &r;
+(*p).length = 20;
+p->length = 20;
+```
+
+### Function
+
+ a piece of code which performs a specific task 
+
+单体编程 Monolithic programming 所有都在一个main函数内
+
+模块化编程或面向过程编程 modular programming or procedural programming
+
+c++ 面向对象
 
 ### Parameter Passing 参数传递
 
-### Class 
+实参actual parameters
+
+形参 formal parameters
+
+- Pass by Value
+
+拷贝赋值，实际函数里的变量和main函数的变量无关
+
+- Pass by Address
+
+使用指针，形参必须为指针
+
+会在stack 开辟一些空间用来存指针
+
+```c++
+void swap(int* x, int* y){
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y= temp;
+}
+swap(&a,&b);
+```
+
+
+
+- Pass by Reference
+
+起的别名，只是从不同函数角度看不一样，实际是一样的。
+
+swap 不再完全独立，代码会被粘贴到swap位置，和main共享堆栈区 
+
+所以引用调用应该用在小段代码，避免循环。
+
+```c++
+void swap(int&x, int&y){
+    int temp;
+    temp = x;
+    x = y;
+    y= temp;
+}
+swap(a, b);
+```
+
+> https://www.cnblogs.com/yanlingyin/archive/2011/12/07/2278961.html
+
+### Array as Parameters
+
+```c++
+void fun(int a[],n){  }
+```
+
+数组其实就是指针，只不过多了一些规定
+
+### Structure as  Parameters.
+
+```c++
+struct Rectangle{
+    int length;
+    int width;
+}
+int area(struct Rectangle r){
+    //pass by value
+    
+    return r.length*r.width;
+}
+int area(struct Rectangle &r){
+    //pass by reference
+    r.length ++;
+    return r.length*r.width;
+}
+void changelength(struct Rectangle *r,int len){
+    (*r).length = len;
+    r->length = len;
+}
+struct Rectangle n(10,5);
+changelength(&n,20);
+```
+
+ 
 
 ### Constructor
 
